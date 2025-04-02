@@ -101,6 +101,8 @@ XML File
 
 Java File
 
+myapplication11 change the name according to file name 
+
 package com.example.myapplication11;
 
 import android.os.Bundle;
