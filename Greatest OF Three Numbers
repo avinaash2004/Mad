@@ -101,31 +101,30 @@ XML File
 
 Java File
 
-myapplication11 change the name according to file name 
-
 package com.example.myapplication11;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-
 public class MainActivity extends AppCompatActivity {
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Button findButton = findViewById(R.id.button);
-        findButton.setOnClickListener(v -> {
-            try {
-                int n1 = Integer.parseInt(((EditText) findViewById(R.id.editTextText)).getText().toString());
-                int n2 = Integer.parseInt(((EditText) findViewById(R.id.editTextText2)).getText().toString());
-                int n3 = Integer.parseInt(((EditText) findViewById(R.id.editTextText3)).getText().toString());
-                Toast.makeText(this, "Greatest number is: " + Math.max(n1, Math.max(n2, n3)), Toast.LENGTH_SHORT).show();
-            } catch (Exception e) {
-                Toast.makeText(this, "Please enter valid numbers", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+findViewById(R.id.button).setOnClickListener(v -> {
+try {
+int n1 = getNumber(R.id.editTextText);
+int n2 = getNumber(R.id.editTextText2);
+int n3 = getNumber(R.id.editTextText3);
+showToast("Greatest number is: " + Math.max(n1, Math.max(n2, n3)));
+} catch (Exception e) {
+showToast("Please enter valid numbers");
 }
-
+});
+}
+private int getNumber(int id) {
+return Integer.parseInt(((EditText) findViewById(id)).getText().toString());
+}
+private void showToast(String message) {
+Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+}
+}
